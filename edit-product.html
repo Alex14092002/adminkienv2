@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CROPPED - Bootstrap 5 Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link
+      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      .content {
+        color: #fff !important;
+        padding-top: 20px;
+      }
+      .item-edit input {
+        width: 80%;
+        margin-left: 20px;
+      }
+      .item-edit {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+      .textarea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .textarea label {
+        margin-right: 20px;
+      }
+      .btn-upload {
+        display: flex;
+        justify-content: center;
+      }
+      .btn-upload button {
+        padding: 10px 30px;
+        font-size: 18px;
+        border: none;
+        background-color: red;
+        color: #fff;
+        box-shadow: 0 0 1px 1px #fff;
+      }
+      .congdung{
+        padding: 30px ;
+      }
+      .first{
+        display: flex;
+      
+      }
+      .first button{
+        margin-left: 30px;
+      }
+      .thanhphan{
+        padding-top: 40px;
+      }
+      .item-tp{
+        padding-bottom: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid position-relative d-flex p-0">
+      <!-- Spinner Start -->
+      <div
+        id="spinner"
+        class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+      >
+        <div
+          class="spinner-border text-primary"
+          style="width: 3rem; height: 3rem"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <!-- Spinner End -->
+
+      <!-- Sidebar Start -->
+      <div class="sidebar pe-4 pb-3">
+        <nav class="navbar bg-secondary navbar-dark">
+          <a href="index.html" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary">
+              <i class="fa fa-user-edit me-2"></i>CROPPED
+            </h3>
+          </a>
+          <div class="d-flex align-items-center ms-4 mb-4">
+            <div class="position-relative">
+              <img
+                class="rounded-circle"
+                src="img/logov3.webp"
+                alt=""
+                style="width: 40px; height: 40px"
+              />
+              <div
+                class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"
+              ></div>
+            </div>
+            <div class="ms-3">
+              <h6 class="mb-0">Jhon Doe</h6>
+              <span>Admin</span>
+            </div>
+          </div>
+          <div class="navbar-nav w-100">
+            <a href="index.html" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Trang Chủ</a>  
+          
+            <a href="home.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sửa trang chủ</a>
+            <a href="./product.html?id_catelory=homeproduct" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sản phẩm trang chủ</a>
+            <a href="./product.html?id_catelory=mua1tang1" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Combo 1 tặng 1</a>
+            <a href="./product.html?id_catelory=combo2" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Combo 2 triệu</a>
+            <a href="./product.html?id_catelory=combo3" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Combo 3 triệu</a>
+            <a href="./product.html?id_catelory=duongthe" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Dưỡng Thể</a>
+            <a href="./product.html?id_catelory=comkemchongnang" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Kem chống nắng</a>
+            <a href="./sheet.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Quản lý Sheet</a>
+        </div>
+        </nav>
+      </div>
+      <!-- Sidebar End -->
+
+      <!-- Content Start -->
+      <div class="content container">
+        <div class="row">
+          <div class="col-4 item-edit">
+            <label for="name">Name :</label>
+            <input type="text" id="name" placeholder="Enter name product" />
+          </div>
+          <div class="col-4 item-edit">
+            <label for="img1">Img1 :</label>
+            <div class="img1"></div>
+            <input type="file" id="img1" accept="image/*" />
+          </div>
+          <div class="col-4 item-edit">
+            <label for="img2">Img2 :</label>
+            <div class="img2"></div>
+            <input type="file" id="img2" accept="image/*" />
+            <img src="" id="preview-img2" alt="" />
+          </div>
+       
+          <div class="col-4 item-edit">
+            <label for="price">Giá tiền : </label>
+            <input type="text" id="price" placeholder="Enter price" />
+          </div>
+          <div class="col-4 item-edit">
+            <label for="price">Name Sheet: </label>
+            <input type="text" id="nameSheet" placeholder="Enter name " />
+          </div>
+    
+        </div>
+       
+        <div class="col-12 item-edit textarea">
+          <label for="">Describe :</label>
+          <textarea name="" id="describe" cols="100%" rows="5"></textarea>
+        </div>
+        <div class="btn-chititetcombo">
+        
+        </div>
+
+        <div class="congdung">
+          <div class="first">
+            <h3>Công dụng</h3>
+            <button class="add-cd">Thêm</button>
+          </div>
+          <ul class="list-cd">
+
+          </ul>
+        </div>
+
+        <div class="hdsd">
+          <div class="first">
+            <h3>Hướng Dẫn Sử Dụng</h3>
+            <button class="add-hdsd">Thêm</button>
+          </div>
+          <ul class="list-hdsd">
+
+          </ul>
+        </div>
+
+
+        <div class="gioithieu">
+          <h3>Giới thiệu</h3>
+          <!-- Hiển thị dữ liệu từ cơ sở dữ liệu -->
+          <input  type="text" class="input-subcribeCD" />
+          <button class="save-subcribeCD">Lưu</button>
+        </div>
+
+
+        <div class="thanhphan">
+          <h3>Thành phần </h3>
+          <button  class="add-tp" onclick="addItem()">Thêm</button>
+          
+        </div>  
+
+        <div class="btn-upload">
+          <button class="btnMain">Update</button>
+        </div>
+      </div>
+      <!-- Content End -->
+
+      <!-- Back to Top -->
+      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+        ><i class="bi bi-arrow-up"></i
+      ></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDjq_wNFhCFdFBNHB_BKZfFvLyDnJFKxPE",
+  authDomain: "data-kieh.firebaseapp.com",
+  databaseURL: "https://data-kieh-default-rtdb.firebaseio.com",
+  projectId: "data-kieh",
+  storageBucket: "data-kieh.appspot.com",
+  messagingSenderId: "471804549736",
+  appId: "1:471804549736:web:b21eaa4ab306290ec9f9dd"
+      };
+      // Khởi tạo Firebase
+      firebase.initializeApp(firebaseConfig);
+      
+  let params = new URLSearchParams(location.search);
+  let id = params.get("id");
+  let id_catelory = params.get("id_catelory");
+  console.log(id, id_catelory);
+
+  const btn_update = document.querySelector(".btnMain");
+  btn_update.onclick = () => {
+    btn_update.disabled = true;
+    const url = `https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}.json`;
+
+    const services = {
+      name: document.querySelector("#name").value.trim(),
+      price: document.querySelector("#price").value.trim(),
+      subcibe: document.querySelector("#describe").value.trim(),
+      nameSheet : document.querySelector('#nameSheet').value.trim()
+    };
+
+    const images = {};
+
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    const storageRef = firebase.storage().ref();
+
+    const uploadPromises = Array.from(fileInputs).map((input, index) => {
+      const file = input.files[0];
+      if (file) {
+        const randomIndex = Math.random().toString(36).substring(2, 8);
+        const imageRef = storageRef.child(
+          `images/${id_catelory}/${id}/img${index + 1}_${randomIndex}`
+        );
+        return imageRef.put(file).then((snapshot) => {
+          return snapshot.ref.getDownloadURL().then((downloadURL) => {
+            images[`img${index + 1}`] = downloadURL;
+          });
+        });
+      }
+    });
+
+    Promise.all(uploadPromises)
+      .then(() => {
+        const data = { ...services, ...images };
+        const options = {
+          method: "put",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        };
+
+        fetch(url, options)
+          .then((res) => res.json())
+          .then((data) => {
+            document.location = `product.html?id_catelory=${id_catelory}`;
+          })
+          .catch((error) => {
+            console.error(`Error updating product: ${error}`);
+          });
+      })
+      .catch((error) => {
+        console.error(`Error uploading images: ${error}`);
+      });
+  };
+
+  const url = `https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}.json`;
+  fetch(url)
+    .then((res) => res.json()
+    
+    )
+    .then((services) => {
+      document.querySelector("#name").value = services.name;
+      document.querySelector("#price").value = services.price;
+      document.querySelector("#describe").value = services.subcibe;
+      document.querySelector('#nameSheet').value = services.nameSheet
+    });
+    </script>
+    <script>
+      const chitiet = document.querySelector('.btn-chititetcombo')
+      chitiet.innerHTML +=`
+      <a href="./chitietcombo.html?id_catelory=${id_catelory}&id=${id}" >Chi tiết combo</a>
+      `
+    </script>
+
+
+<script>
+  // Hàm để gửi dữ liệu mới vào cơ sở dữ liệu
+  async function saveDataToDatabase(category, newContent) {
+    const postData = { content: newContent };
+    const saveUrl = `https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}/${category}.json`;
+    const saveOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    };
+
+    await fetch(saveUrl, saveOptions);
+  }
+
+  // Hàm để lấy và hiển thị dữ liệu từ cơ sở dữ liệu
+  async function displayDataFromDatabase(category) {
+    const listElement = document.querySelector(`.list-${category}`);
+    const res = await fetch(`https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}/${category}.json`);
+    const data = await res.json();
+
+    listElement.innerHTML = ''; // Xóa dữ liệu cũ
+
+    if (data) {
+      Object.entries(data).map(([key, value]) => {
+        listElement.innerHTML += `
+          <li>${value.content} <button class="delete-${category}" data-key="${key}">Xóa</button></li>
+        `;
+      });
+
+      // Lắng nghe sự kiện click cho nút "Xóa"
+      const deleteButtons = document.querySelectorAll(`.delete-${category}`);
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+          const key = button.getAttribute('data-key');
+          await deleteDataFromDatabase(category, key);
+          await displayDataFromDatabase(category); // Cập nhật giao diện sau khi xóa thành công
+        });
+      });
+    }
+  }
+
+  // Hàm để xóa dữ liệu từ cơ sở dữ liệu
+  async function deleteDataFromDatabase(category, key) {
+    const deleteUrl = `https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}/${category}/${key}.json`;
+    const deleteOptions = {
+      method: 'DELETE'
+    };
+
+    await fetch(deleteUrl, deleteOptions);
+  }
+
+  // Khi trang được tải
+  window.addEventListener('DOMContentLoaded', async () => {
+    await displayDataFromDatabase('cd');
+    await displayDataFromDatabase('hdsd');
+
+    const addCongdungBtn = document.querySelector('.add-cd');
+    addCongdungBtn.addEventListener('click', () => {
+      const listCongdung = document.querySelector('.list-cd');
+      listCongdung.innerHTML += `
+        <li>
+          <input type="text" class="input-congdung" placeholder="Nhập nội dung cần thêm">
+          <button class="save-congdung">Lưu</button>
+        </li>
+      `;
+
+      const saveCongdungBtn = document.querySelector('.save-congdung');
+      saveCongdungBtn.addEventListener('click', async () => {
+        const inputCongdung = document.querySelector('.input-congdung');
+        const newContent = inputCongdung.value;
+        if (newContent.trim() !== '') {
+          await saveDataToDatabase('cd', newContent);
+          await displayDataFromDatabase('cd'); // Cập nhật giao diện sau khi lưu thành công
+        }
+      });
+    });
+
+    const addHdsdBtn = document.querySelector('.add-hdsd');
+    addHdsdBtn.addEventListener('click', () => {
+      const listHdsd = document.querySelector('.list-hdsd');
+      listHdsd.innerHTML += `
+        <li>
+          <input type="text" class="input-hdsd" placeholder="Nhập nội dung cần thêm">
+          <button class="save-hdsd">Lưu</button>
+        </li>
+      `;
+
+      const saveHdsdBtn = document.querySelector('.save-hdsd');
+      saveHdsdBtn.addEventListener('click', async () => {
+        const inputHdsd = document.querySelector('.input-hdsd');
+        const newContent = inputHdsd.value;
+        if (newContent.trim() !== '') {
+          await saveDataToDatabase('hdsd', newContent);
+          await displayDataFromDatabase('hdsd'); // Cập nhật giao diện sau khi lưu thành công
+        }
+      });
+    });
+  });
+</script>
+<script>
+  // Hàm để lưu dữ liệu mới vào cơ sở dữ liệu
+  async function saveDataToDatabase2(newContent) {
+    const postData = { subcribeCD: newContent };
+    const saveUrl = `https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}.json`;
+    const saveOptions = {
+      method: 'PATCH', // Sử dụng PATCH method để cập nhật dữ liệu
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    };
+
+    await fetch(saveUrl, saveOptions);
+  }
+
+  // Khi trang được tải
+  window.addEventListener('DOMContentLoaded', async () => {
+    const gioithieu = document.querySelector('.gioithieu');
+    const res3 = await fetch(`https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}.json`);
+    const data3 = await res3.json();
+
+    // Hiển thị dữ liệu từ cơ sở dữ liệu vào input
+    const inputSubcribeCD = document.querySelector('.input-subcribeCD');
+    inputSubcribeCD.value = data3.subcribeCD;
+
+    const saveSubcribeCDBtn = document.querySelector('.save-subcribeCD');
+    saveSubcribeCDBtn.addEventListener('click', async () => {
+      const newContent = inputSubcribeCD.value;
+      await saveDataToDatabase2(newContent);
+      // Cập nhật giao diện sau khi lưu thành công (nếu bạn muốn)
+      gioithieu.innerHTML = `
+        <input type="text" class="input-subcribeCD" value="${newContent}" />
+        <button class="save-subcribeCD">Lưu</button>
+      `;
+    });
+  });
+</script>
+
+<div class="thanhphan"></div>
+
+<script>
+  const dbURL = `https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}/tp.json`;
+  const tp = document.querySelector('.thanhphan');
+  let dataArr = [];
+
+  // Hàm fetch và lưu dữ liệu vào mảng dataArr
+  const fetchData = async () => {
+    const res = await fetch(dbURL);
+    const data = await res.json();
+    if (data) {
+      dataArr = Object.keys(data).map((key) => ({ key, value: data[key] }));
+      displayData();
+    }
+  };
+
+  // Hiển thị dữ liệu từ mảng dataArr
+  const displayData = () => {
+    // Clear the existing content in the tp element
+  
+
+    dataArr.forEach(({ key, value }) => {
+      tp.innerHTML += `
+        <div class="row item-tp" data-key="${key}">
+          <div class="col-3">
+            <span>${value.name}</span>
+          </div>
+          <div class="col-3">
+            <p>${value.mota}</p>
+          </div>
+          <div class="col-3">
+            <img src="${value.img}" alt="" width="100%">
+          </div>
+          <div class="col-3">
+            <button onclick="deleteItem('${key}')">Xóa</button>
+          </div>
+        </div>
+      `;
+    });
+  };
+
+  // Thêm sự kiện click vào nút "Thêm thành phần"
+  const addItem = () => {
+    tp.innerHTML += `
+      <div class="row item-tp">
+        <div class="col-3">
+          <input type="text" id="nameTP" placeholder="Tên thành phần" />
+        </div>
+        <div class="col-3">
+          <input type="text" id="motaTP" placeholder="Mô tả" />
+        </div>
+        <div class="col-3">
+          <input type="file" id="imgTP" accept="image/*" onchange="previewImage(event)" />
+          <img class="preview-img" src="#" alt="" style="display: none;" width="100%">
+        </div>
+        <div class="col-3">
+          <button onclick="saveItem()">Lưu</button>
+        </div>
+      </div>
+    `;
+  };
+
+  // Xử lý sự kiện xóa thành phần
+  const deleteItem = async (key) => {
+    // Thực hiện lệnh xóa dữ liệu tại key trong Firebase Realtime Database
+    await fetch(`https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}/tp/${key}.json`, {
+      method: 'DELETE'
+    });
+
+    // Sau khi xóa, cập nhật lại mảng dataArr và hiển thị dữ liệu
+    dataArr = dataArr.filter((item) => item.key !== key);
+    displayData();
+  };
+
+  // Xử lý sự kiện lưu mới thành phần
+  const saveItem = async () => {
+    const nameInput = document.querySelector('#nameTP');
+    const motaInput = document.querySelector('#motaTP');
+    const fileInput = document.querySelector('#imgTP');
+    const file = fileInput.files[0];
+    if (!nameInput || !motaInput) {
+      console.error("Name input or Mota input not found");
+      return;
+    }
+
+    const name = nameInput.value;
+    const mota = motaInput.value;
+
+    // Chuyển đổi hình ảnh thành base64
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      const base64Image = reader.result;
+
+      // Thực hiện lệnh lưu dữ liệu mới vào Firebase Realtime Database
+      const response = await fetch(dbURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, mota, img: base64Image })
+      });
+
+      // Parse the response to get the newly generated key from Firebase
+      const data = await response.json();
+      const newKey = data.name;
+
+      // Push the new item to the dataArr
+      dataArr.push({ key: newKey, value: { name, mota, img: base64Image } });
+      displayData();
+
+      // Clear input fields after saving the item
+      nameInput.value = '';
+      motaInput.value = '';
+      fileInput.value = '';
+      const imgPreview = fileInput.parentElement.querySelector('.preview-img');
+      imgPreview.src = '#';
+      imgPreview.style.display = 'none';
+    };
+  };
+
+  // Hiển thị trước hình ảnh khi chọn ảnh
+  const previewImage = (event) => {
+    const fileInput = event.target;
+    const imgPreview = fileInput.parentElement.querySelector('.preview-img');
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      imgPreview.src = reader.result;
+      imgPreview.style.display = 'block';
+    };
+  };
+
+  // Ban đầu, fetch dữ liệu và hiển thị
+  fetchData();
+</script>
+
+  </body>
+</html>
