@@ -307,7 +307,7 @@
       .then(() => {
         const data = { ...services, ...images };
         const options = {
-          method: "put",
+          method: "patch",
           body: JSON.stringify(data),
           headers: { "Content-Type": "application/json" },
         };
