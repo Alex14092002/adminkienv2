@@ -307,7 +307,7 @@
       .then(() => {
         const data = { ...services, ...images };
         const options = {
-          method: "put",
+          method: "PATCH",
           body: JSON.stringify(data),
           headers: { "Content-Type": "application/json" },
         };
@@ -352,7 +352,7 @@
     const postData = { content: newContent };
     const saveUrl = `https://data-kieh-default-rtdb.firebaseio.com/${id_catelory}/${id}/${category}.json`;
     const saveOptions = {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -583,7 +583,7 @@
 
       // Thực hiện lệnh lưu dữ liệu mới vào Firebase Realtime Database
       const response = await fetch(dbURL, {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
